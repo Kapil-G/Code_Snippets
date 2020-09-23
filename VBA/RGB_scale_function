@@ -1,31 +1,24 @@
-'rgb function to return rgb value based on color scale (0=red, 50=yellow, 100=green)
-'used in various projects to visually illustrate percentages and severity.
-'all maths simplified
-
-Public Function getcolorfunc(tempvar1 As Integer) as Variant
+Public Function getcolorfunc(tempvar1 As Integer) As Variant
   'declare variables
   Dim rvalue As Integer
   Dim gvalue As Integer
   Dim bvalue As Integer
   
-	bvalue = 0
-	If tempvar1 < 50 Then
-		rvalue = 255
-		gvalue = Int(tempvar1 * 5.1)
-	End If
-	If tempvar1 > 50 Then
-		rvalue = 255 - (Int(tempvar1 ^ 2  / 50))
-		gvalue = 255
-	End If
-	If tempvar1 = 50 Then
-		rvalue = 255
-		gvalue = 255
-	End If
-	If tempvar1 > 79 Then
-		rvalue = 0
-		gvalue = 255 - (Int(tempvar1 ^ 2 / 85))
-		bvalue = 0
-	End If
+    bvalue = 0
+    If tempvar1 < 50 Then
+        rvalue = 255
+        gvalue = Int(tempvar1 * 5.1)
+    ElseIf tempvar1 > 50 Then
+        rvalue = 255 - (Int(tempvar1 ^ 2 / 50))
+        gvalue = 255
+    ElseIf tempvar1 = 50 Then
+        rvalue = 255
+        gvalue = 255
+    ElseIf tempvar1 > 79 Then
+        rvalue = 0
+        gvalue = 255 - (Int(tempvar1 ^ 2 / 85))
+        bvalue = 0
+    End If
   
-  getcolorfunc = rgb (rvalue, gvalue, bvalue)
+  getcolorfunc = RGB(rvalue, gvalue, bvalue)
 End Function
